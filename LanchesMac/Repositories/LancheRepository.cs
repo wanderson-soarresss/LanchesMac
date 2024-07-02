@@ -19,7 +19,7 @@ namespace LanchesMac.Repositories
 
         public Lanche GetLancheById(int lancheId)
         {
-            throw new NotImplementedException();
+            return _context.Lanches.FirstOrDefault(l=> l.LancheId == lancheId);
         }
     }
 }

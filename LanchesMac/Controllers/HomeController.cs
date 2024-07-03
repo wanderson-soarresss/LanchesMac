@@ -9,6 +9,7 @@ namespace LanchesMac.Controllers
 
         public IActionResult Index()
         {
+            TempData["Nome"] = "Macoratti";
             return View();
         }
 

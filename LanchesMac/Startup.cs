@@ -57,20 +57,23 @@ public class Startup
 
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllerRoute(
-                    name: "teste",
-                    pattern: "testeme",
-                    defaults: new { controller = "teste", Action = "index" });
+        app.UseEndpoints(endpoints =>
+        {
 
-                endpoints.MapControllerRoute(
-                    name: "admin",
-                    pattern : "admin/{action=index}/{id}",
-                    defaults : new {controller = "admin"});
+        endpoints.MapControllerRoute(
+                name: "home",
+                pattern: "{home}",
+                defaults: new { controller = "Home", Action = "Index" });
 
 
-                endpoints.MapControllerRoute(
+          endpoints.MapControllerRoute(
+                name: "admin",
+                pattern: "{admin}",
+                defaults: new { controller = "Admin", Action = "Index" });
+
+
+
+            endpoints.MapControllerRoute(
                     name:"default",
                     pattern:"{controller=Home}/{action=Index}/{Id?}");
             });

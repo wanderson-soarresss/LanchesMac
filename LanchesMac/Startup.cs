@@ -59,20 +59,6 @@ public class Startup
 
         app.UseEndpoints(endpoints =>
         {
-
-        endpoints.MapControllerRoute(
-                name: "home",
-                pattern: "{home}",
-                defaults: new { controller = "Home", Action = "Index" });
-
-
-          endpoints.MapControllerRoute(
-                name: "admin",
-                pattern: "{admin}",
-                defaults: new { controller = "Admin", Action = "Index" });
-
-
-
             endpoints.MapControllerRoute(
                     name:"default",
                     pattern:"{controller=Home}/{action=Index}/{Id?}");

@@ -59,23 +59,23 @@ namespace LanchesMac.Models
         public string Email { get; set; }
 
         [ScaffoldColumn(false)]
-        [Column(TypeName ="decimal(18,2")]
+        [Column(TypeName = "decimal(18,2")]
         [Display(Name = "Total do Pedido")]
         public decimal PedidoTotal { get; set; }
 
         [ScaffoldColumn(false)]
         [Display(Name = "itens no Pedido")]
-        public int TotalItensPedido {  get; set; }
+        public int TotalItensPedido { get; set; }
 
 
         [Display(Name = "Data do Pedido")]
         [DataType(DataType.Text)]
-        [DisplayFormat(DataFormatString ="{0: dd/MM/yyyy hh:mm}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0: dd/MM/yyyy hh:mm}", ApplyFormatInEditMode = false)]
         public DateTime PedidoEnviado { get; set; }
 
         [Display(Name = "Data Envio Pedido")]
         [DataType(DataType.Text)]
-        [DisplayFormat(DataFormatString = "{0: dd/MM/yyyy hh:mm}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0: dd/MM/yyyy hh:mm}", ApplyFormatInEditMode = false)]
         public DateTime PedidoEntregue { get; set; }
 
         public List<PedidoDetalhe> PedidoItens { get; set; }
@@ -83,3 +83,4 @@ namespace LanchesMac.Models
 
     }
 }
+

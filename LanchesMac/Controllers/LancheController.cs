@@ -60,19 +60,29 @@ namespace LanchesMac.Controllers
 
         public ViewResult Search(string searchString)
         {
-            IEnumerable<Lanche> lanhces;
+            IEnumerable<Lanche> lanches;
             string categoriaAtual = string.Empty;
 
             if (string.IsNullOrEmpty(searchString))
             {
-                lanhces = _lancherepository.Lanches.OrderBy(p => p.LancheId);
+                lanches = _lancherepository.Lanches.OrderBy(p => p.LancheId);
                 categoriaAtual = "Todos os lanches";
             }
             else
             {
-                LanchesMac = _lancherepository.Lanches
+                lanches = _lancherepository.Lanches
                                 .Where(p => p.Nome.ToLower().Contains(searchString.ToLower()));
+
+                if (lanches.Any())
+                    categoriaAtual = "Lanches";
+                else
+                    categoriaAtual = "Nenhum lanche foi encontrado";
             }
+            return View("~/View/Lanche/List.cshtml", new LancheListViewModel
+            {
+                Lanches = lanches,
+                CategoriaAtual = categoriaAtual
+            });
         }
     }
 }

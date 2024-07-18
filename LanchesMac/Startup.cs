@@ -4,6 +4,7 @@ using LanchesMac.Repositories;
 using LanchesMac.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using NuGet.Protocol;
 
 
 namespace LanchesMac;
@@ -25,7 +26,8 @@ public class Startup
         options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             
         services.AddTransient<ILancheRepository, LancheRepository>();
-        services.AddTransient<ICategoriaRepository, CategoriaRepository>();   
+        services.AddTransient<ICategoriaRepository, CategoriaRepository>();  
+        services.AddTransient<IPedidoRepository,PedidoRepository>();
 
         services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         services.AddScoped(sp => CarrinhoCompra.GetCarrinho(sp));

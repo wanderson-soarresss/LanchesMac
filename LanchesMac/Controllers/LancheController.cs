@@ -71,17 +71,17 @@ namespace LanchesMac.Controllers
             else
             {
                 lanches = _lancherepository.Lanches
-                                .Where(p => p.Nome.ToLower().Contains(searchString.ToLower()));
+                            .Where(p => p.Nome.ToLower().Contains(searchString.ToLower()));
 
                 if (lanches.Any())
                     categoriaAtual = "Lanches";
                 else
                     categoriaAtual = "Nenhum lanche foi encontrado";
             }
-            return View("~/View/Lanche/List.cshtml", new LancheListViewModel
+            return View("~/Views/Lanche/List.cshtml", new LancheListViewModel
             {
                 Lanches = lanches,
-                CategoriaAtual = categoriaAtual
+                CategoriaAtual= categoriaAtual
             });
         }
     }

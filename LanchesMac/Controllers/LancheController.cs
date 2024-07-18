@@ -57,5 +57,22 @@ namespace LanchesMac.Controllers
             var lanche = _lancherepository.Lanches.FirstOrDefault(l => l.LancheId == lancheId);
             return View(lanche);
         }
+
+        public ViewResult Search(string searchString)
+        {
+            IEnumerable<Lanche> lanhces;
+            string categoriaAtual = string.Empty;
+
+            if (string.IsNullOrEmpty(searchString))
+            {
+                lanhces = _lancherepository.Lanches.OrderBy(p => p.LancheId);
+                categoriaAtual = "Todos os lanches";
+            }
+            else
+            {
+                LanchesMac = _lancherepository.Lanches
+                                .Where(p => p.Nome.ToLower().Contains(searchString.ToLower()));
+            }
+        }
     }
 }

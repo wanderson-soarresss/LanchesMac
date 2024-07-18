@@ -23,6 +23,11 @@
                       <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                       @* <a class="nav-link text-light" asp-area="" asp-controller="Lanche" asp-action="List">Lanches</a> *@
                       <a class="nav-link text-light" asp-area="" asp-controller="Contato" asp-action="Index">Contato</a>
+                        <form class="nvabar-form navbar-right" asp-controller="Lanche" asp-action="Search" method="get">
+                            <div class="form-group">
+                               <input type="text" class="form-control" placeholder="Procura produto" name="searchString"value="@ViewData["seachString"]">
+                           </div>
+                        </form>
                 </div>
             </div>
         </nav>

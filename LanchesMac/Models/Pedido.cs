@@ -53,9 +53,7 @@ namespace LanchesMac.Models
         [Required(ErrorMessage = "Informe o email.")]
         [StringLength(50)]
         [DataType(DataType.EmailAddress)]
-        [RegularExpression(@" @""^(?!\.)(""""([^""""\r\\]|\\[""""\r\\])*""""|""
-               + @""([-a-z0-9!#$%&'*+/=?^_`{|}~]|(?<!\.)\.)*)(?""
-               + @""[@]((?:[-a-z0-9]+\.)+[a-z]{2,})$""", ErrorMessage = "O email não possui um formato correto")]
+        [RegularExpression(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,})+)$", ErrorMessage = "O email não possui um formato correto")]
         public string Email { get; set; }
 
         [ScaffoldColumn(false)]

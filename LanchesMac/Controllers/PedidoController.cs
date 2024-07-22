@@ -1,4 +1,5 @@
-﻿using LanchesMac.Models;
+﻿using Humanizer.DateTimeHumanizeStrategy;
+using LanchesMac.Models;
 using LanchesMac.Repositories.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -25,7 +26,33 @@ namespace LanchesMac.Controllers
         [HttpPost]
         public IActionResult Checkout(Pedido pedido) 
         {
-            return View();
+            int totalItensPedido = 0;
+            decimal precoTotalPedido = 0.0m;
+            List<CarrinhoCompraItem> items = _carrinhoCompra.GetCarrinhoCompraItens();
+            _carrinhoCompra.CarrinhoCompraItems = items;
+
+            if (_carrinhoCompra.CarrinhoCompraItems.Count == 0) 
+            {
+                ModelState.AddModelError("","Seu carrinho esta vazio, que tal incluir um lanche...");
+            }
+
+            foreach(var item in items)
+            {
+                totalItensPedido += item.Quantidade;
+                precoTotalPedido += (item.Lanche.Preco * item.Quantidade);
+            }   
+            pedido.TotalItensPedido = totalItensPedido;
+            pedido.PedidoTotal = precoTotalPedido;
+
+            if (ModelState.IsValid)
+            {
+                _pedidoRepository.CriarPedido(pedido);
+                ViewBag.CheckoutCompletoMensagem = "Obrigado pelo seu pedido :)";
+
+                _carrinhoCompra.LimparCarrinho();
+
+                return View("~/Views/Pedido/CheckoutCompleto.cshntml",pedido);
+            }
         }
 
     }

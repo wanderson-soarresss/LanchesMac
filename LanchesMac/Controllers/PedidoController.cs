@@ -24,7 +24,7 @@ namespace LanchesMac.Controllers
         }
 
         [HttpPost]
-        public IActionResult Checkout(Pedido pedido) 
+        public IActionResult Checkout(Pedido pedido)
         {
             int totalItensPedido = 0;
             decimal precoTotalPedido = 0.0m;
@@ -51,8 +51,10 @@ namespace LanchesMac.Controllers
 
                 _carrinhoCompra.LimparCarrinho();
 
-                return View("~/Views/Pedido/CheckoutCompleto.cshntml",pedido);
+                return View("~/Views/Pedido/CheckoutCompleto.cshntml", pedido);
             }
+            return View(pedido);
+           
         }
 
     }

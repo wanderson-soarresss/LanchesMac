@@ -48,10 +48,11 @@ namespace LanchesMac.Controllers
             {
                 _pedidoRepository.CriarPedido(pedido);
                 ViewBag.CheckoutCompletoMensagem = "Obrigado pelo seu pedido :)";
+                ViewBag.TotalPedido = _carrinhoCompra.GetCarrinhoCompraTotal();
 
                 _carrinhoCompra.LimparCarrinho();
 
-                return View("~/Views/Pedido/CheckoutCompleto.cshntml", pedido);
+                return View("~/Views/Pedido/CheckoutCompleto.cshtml", pedido);
             }
             return View(pedido);
            

@@ -1,13 +1,19 @@
 ﻿@model HomeViewModel
 
-<partial name="_Carousel"/>
 
-<h2>Os preferidos da semana</h2>
-<h4>Tá com fome ???</h4>
+<div class="hero_area">
+    <div class="bg-box">
+        <img src="~/image/layout/hero-bg.jpg" alt="">
 
-<div class="row">
-    @foreach(var lanche in Model.LanchesPreferidos)
-    {
-        <partial name ="_LancheResumo" for="@lanche"/>
-    }
-</div>
+
+
+
+        <div id="Bloco_dos_preferidos" class="row m-4 w-50">
+            @foreach (var lanche in Model.LanchesPreferidos)
+            {
+                <partial name="_LancheResumo" for="@lanche" />
+            }
+        </div>
+
+ </div>
+ 

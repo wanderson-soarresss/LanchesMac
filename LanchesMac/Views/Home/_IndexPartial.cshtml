@@ -1,0 +1,22 @@
+﻿<div class="row no-gutter">
+    @{
+        string[] imgs =
+                {
+    "~/image/carrousel/burger-5712704_1280.jpg",
+    "~/image/carrousel/fast-food-6868812_1280.jpg",
+    "~/image/carrousel/hamburger-3483290_1280.jpg",
+    "~/image/carrousel/sandwich-2301387_1280.jpg",
+    "~/image/carrousel/sandwich-2709083_1280.jpg"
+  
+        };
+    }
+    @foreach (var img in imgs)
+    {
+        <div class="col-xs-2 col-md-2">
+            <a class="portifolio-box" asp-action="List" asp-controller="Lanche">
+            <img src="@Url.Content(img)" alt="Lanches" width="450" height="220" />
+            </a>
+        </div>
+    }
+
+</div>

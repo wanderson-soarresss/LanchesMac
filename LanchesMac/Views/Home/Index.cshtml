@@ -1,19 +1,54 @@
 ﻿@model HomeViewModel
 
 
-<div class="hero_area">
-    <div class="bg-box">
-        <img src="~/image/layout/hero-bg.jpg" alt="">
 
+<div class="container">
+    <section id="sobre">
+        <div class="row justify-content-center">
+            <div class="col-xs-12 col-sm-6 col-md-3 text-center">
+                <img src="~/image/layout/icons8-coração-70.png"/>
+                <h3>Feitos com amor</h3>
+                <p>Fazemos seu lanche com carinho</p>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-3 text-center">
+                <img src="~/image/layout/icons8-entrega-70.png" />
+                <h3>Pontos para Entrega</h3>
+                <p>Entregamos o seu pedido</p>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-3 text-center">
+                <img src="~/image/layout/icons8-oferta.gif" />
+                <h3>Preços Camaradas</h3>
+                <p>Promoções imperdíveis</p>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-3 text-center">
+                <img src="~/image/layout/icons8-natural-70.png" />
+                <h3>Lanches Naturais</h3>
+                <p>...Saudáveis e Naturais...</p>
+            </div>
+        </div>
+    </section>
+    <section id="portifolio">
+        @await Html.PartialAsync("_IndexPartial")
+    </section>
+    <br />
+    <section id="contato">
+        <div class="row">
+            <div class="col col-md-5 col-lg-5 offset-1" style="color:black">
+                <h4>&copy; 2024 - LanchesMac</h4>
+                <p class="text-justify">
+                    Aqui você encontra aquele lanche gostoso que da água na boca.
+                    </p>
+            </div>
+            <div class="col col-md-5 col-lg-5 offset-1" style="color:black">
+                <h4>Tem alguma dúvida ?</h4>
+                <ul class="list-unstyled">
+                    <li class="py-1">Av. Severino Balesterios, 30 </li>
+                    <li class="py-1"> +55- 999 9837 502</li>
+                    <li class="py-1"> <a href="lanchesmac@hotmail.com" style="color:blue"></a>lanchesmac@hotmail.com</li>
+                </ul>
 
-
-
-        <div id="Bloco_dos_preferidos" class="row m-4 w-50">
-            @foreach (var lanche in Model.LanchesPreferidos)
-            {
-                <partial name="_LancheResumo" for="@lanche" />
-            }
+            </div>
         </div>
 
- </div>
- 
+    </section>
+</div>
